@@ -1,0 +1,47 @@
+{
+  "name": "eslint-plugin-with-tsc-error",
+  "version": "0.0.0",
+  "main": "dist/index.js",
+  "repository": "https://github.com/mkusaka/eslint-plugin-with-tsc-error.git",
+  "bugs": {
+    "url": "https://github.com/mkusaka/eslint-plugin-prefer-type-annotate/issues"
+  },
+  "homepage": "https://github.com/mkusaka/eslint-plugin-prefer-type-annotate",
+  "author": "mkusaka <hinoshita1992@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "tsc --watch src",
+    "build": "rm -rf dist && tsc -p .",
+    "test": "jest",
+    "lint": "eslint",
+    "prepare": "yarn build"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.10.2",
+    "@babel/preset-env": "^7.10.2",
+    "@babel/preset-typescript": "^7.10.1",
+    "@types/eslint": "^6.8.1",
+    "@types/estree": "^0.0.44",
+    "@typescript-eslint/eslint-plugin": "^3.4.0",
+    "@typescript-eslint/parser": "^3.4.0",
+    "babel-jest": "^26.0.1",
+    "eslint": "^7.3.1",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.3",
+    "husky": "^4.2.5",
+    "jest": "^26.1.0",
+    "lint-staged": "^10.2.9",
+    "prettier": "^2.0.5",
+    "tslib": "^2.0.0",
+    "typescript": "^3.9.5"
+  },
+  "prettier": {
+    "printWidth": 80,
+    "semi": true,
+    "singleQuote": false,
+    "trailingComma": "es5"
+  },
+  "dependencies": {
+    "@typescript-eslint/experimental-utils": "^3.4.0"
+  }
+}
