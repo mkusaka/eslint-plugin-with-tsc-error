@@ -36,10 +36,9 @@
     "typescript": "^3.9.5"
   },
   "prettier": {
-    "printWidth": 80,
+    "printWidth": 120,
     "semi": true,
-    "singleQuote": false,
-    "trailingComma": "es5"
+    "singleQuote": false
   },
   "dependencies": {
     "@typescript-eslint/experimental-utils": "^3.4.0"
