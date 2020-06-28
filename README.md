@@ -26,7 +26,7 @@ module.exports = {
     "eslint-plugin-with-tsc-error",
   ],
   rules: {
-    "eslint-plugin-with-tsc-error",
+    "eslint-plugin-with-tsc-error/all",
   },
 };
 ```
