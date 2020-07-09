@@ -1,6 +1,4 @@
-import {
-  ESLintUtils
-} from "@typescript-eslint/experimental-utils";
+import { ESLintUtils } from "@typescript-eslint/experimental-utils";
 import ts from "typescript";
 
 const createRule = ESLintUtils.RuleCreator((ruleName) => ruleName);
@@ -23,65 +21,37 @@ export const withTscErrors = createRule({
   },
   defaultOptions: [],
   create(context) {
-    const {
-      program,
-      tsNodeToESTreeNodeMap,
-    } = ESLintUtils.getParserServices(context);
-    const sourceFile = program.getSourceFile(context.getFilename());
-    const emitResults = program.emit(undefined, () => { });
+    const { program } = ESLintUtils.getParserServices(context);
+    const emitResults = program.emit(undefined, () => {});
     const allDiagnostics = [
       ...ts.getPreEmitDiagnostics(program, program.getSourceFile(context.getFilename())),
       ...emitResults.diagnostics,
-    ] as const;
-    const errors = allDiagnostics.reduce<{
-      [key: string]: string;
-    }>((prev, curr) => {
-      if (!curr.start || !curr.length) {
-        return prev;
-      }
-      const message = ts.flattenDiagnosticMessageText(curr.messageText, "\n");
-      const key = `${curr.start},${curr.start + curr.length}`;
-      return {
-        ...prev,
-        [key]: message,
-      };
-    }, {});
-    const errorNodes: {
-      key: string;
-      node: ts.Node;
-      message: string;
-    }[] = [];
-
-    function visit(node: ts.Node) {
-      const nodestart = node.pos;
-      const nodeend = node.end;
-      const key = `${nodestart},${nodeend}`;
-      // FIXME: some case, this detect node logic is not correct.
-      // Try such as example/src/index.ts with lint(without following && !errorNodes.some(e => e.key === key) logic)
-      if (errors[key] && !errorNodes.some(e => e.key === key)) {
-        errorNodes.push({
-          key,
-          node,
-          message: errors[key],
-        });
-      }
-      ts.forEachChild(node, visit);
-    }
-    if (sourceFile) {
-      visit(sourceFile);
-    }
+    ];
 
     return {
-      Program: function () {
-        errorNodes.forEach((errorNode) => {
-          const esNode = tsNodeToESTreeNodeMap.get(errorNode.node);
-          context.report({
-            node: esNode,
-            messageId: "message",
-            data: {
-              message: errorNode.message,
-            },
-          });
+      "Program:exit": function () {
+        allDiagnostics.forEach((diagnostic) => {
+          if (diagnostic.file) {
+            const { line: startLine, character: startCharacter } = diagnostic.file.getLineAndCharacterOfPosition(diagnostic.start!)
+            const { line: endLine, character: endCharacter } = diagnostic.file.getLineAndCharacterOfPosition(diagnostic.start! + diagnostic.length!)
+            const message = ts.flattenDiagnosticMessageText(diagnostic.messageText, "\n");
+            context.report({
+              loc: {
+                start: {
+                  line: startLine,
+                  column: startCharacter,
+                },
+                end: {
+                  line: endLine,
+                  column: endCharacter,
+                },
+              },
+              messageId: "message",
+              data: {
+                message,
+              },
+            });
+          }
         });
       },
     };
