@@ -2,14 +2,12 @@
 
 ## install
 
-type anotate
-
 ```bash
-npm install --save-dev eslint-plugin-with-tsc-error
+npm install --save-dev eslint-plugin-with-tsc-error @typescript-eslint/parser @typescript-eslint/eslint-plugin
 ```
 
 ```bash
-yarn add -D eslint-plugin-with-tsc-error
+yarn add -D eslint-plugin-with-tsc-error @typescript-eslint/parser @typescript-eslint/eslint-plugin
 ```
 
 ## config
@@ -20,7 +18,7 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 2020,
     sourceType: "module",
-    project: "tsconfig.json", // This rule require type infomation
+    project: "tsconfig.eslint.json", // This rule require type information
   },
   plugins: [
     "eslint-plugin-with-tsc-error",
@@ -34,19 +32,20 @@ module.exports = {
 
 ## Motivation
 
-In cases when the noInplicitAny CompileOption off ts environment, function or variable declaration are sometime inferred to `any` type.
+The typescript compiler has a variety of options to adjust the flexibility of the type system
+Especially when converting a javascript project to a typescript project, many of those options are disabled and often included quite loosely as a type system
 
-Since `any` type is very dangerous (it brake TypeScript typesystem..), most of TypeScript developer may want to enable `noImplicitAny` compiler option.
+However, if you want to do a stricter type check later (e.g., noImplicitAny to true), it can be difficult in practice to enable all those options at once, which is more pronounced in larger projects
 
-So, some project, like gradually converting from js to ts all project files, must annotate implicit any `before` noImplicitAny to true.
+This package solves those problems as a plugin for eslint
 
-But, sometime difficult.
+Because it is an eslint plugin, you can multiply it by a file or change the typescript options only when eslint is running (i.e. you can tighten the options only when eslint is running)
 
-To detect no implicit any and destroy it gradually, eslint is best solution of that. But, there is no good rule for this problem. (typedef rule can't detect inferred type information.)
+Translated with www.DeepL.com/Translator (free version)
 
 ## Rule Details
 
-Examples of **incorrect** code for this rule:
+Examples of **incorrect** code for this rule with noImplicitAny compiler option:
 
 ```ts
 let a;
