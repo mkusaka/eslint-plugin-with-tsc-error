@@ -22,6 +22,7 @@ export const withTscErrors = createRule({
   defaultOptions: [],
   create(context) {
     const { program } = ESLintUtils.getParserServices(context);
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
     const emitResults = program.emit(undefined, () => {});
     const allDiagnostics = [
       ...ts.getPreEmitDiagnostics(program, program.getSourceFile(context.getFilename())),
@@ -32,8 +33,12 @@ export const withTscErrors = createRule({
       "Program:exit": function () {
         allDiagnostics.forEach((diagnostic) => {
           if (diagnostic.file) {
-            const { line: startLine, character: startCharacter } = diagnostic.file.getLineAndCharacterOfPosition(diagnostic.start!)
-            const { line: endLine, character: endCharacter } = diagnostic.file.getLineAndCharacterOfPosition(diagnostic.start! + diagnostic.length!)
+            const { line: startLine, character: startCharacter } = diagnostic.file.getLineAndCharacterOfPosition(
+              diagnostic.start!
+            );
+            const { line: endLine, character: endCharacter } = diagnostic.file.getLineAndCharacterOfPosition(
+              diagnostic.start! + diagnostic.length!
+            );
             const message = ts.flattenDiagnosticMessageText(diagnostic.messageText, "\n");
             context.report({
               loc: {
