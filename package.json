@@ -17,15 +17,15 @@
     "prepare": "yarn build"
   },
   "devDependencies": {
-    "@babel/core": "^7.10.2",
-    "@babel/preset-env": "^7.10.2",
-    "@babel/preset-typescript": "^7.10.1",
+    "@babel/core": "^7.10.4",
+    "@babel/preset-env": "^7.10.4",
+    "@babel/preset-typescript": "^7.10.4",
     "@types/eslint": "^7.2.0",
     "@types/estree": "^0.0.45",
-    "@typescript-eslint/eslint-plugin": "^3.4.0",
-    "@typescript-eslint/parser": "^3.4.0",
+    "@typescript-eslint/eslint-plugin": "^3.6.0",
+    "@typescript-eslint/parser": "^3.6.0",
     "babel-jest": "^26.0.1",
-    "eslint": "^7.3.1",
+    "eslint": "^7.4.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.1.3",
     "husky": "^4.2.5",
@@ -33,7 +33,7 @@
     "lint-staged": "^10.2.9",
     "prettier": "^2.0.5",
     "tslib": "^2.0.0",
-    "typescript": "^3.9.5"
+    "typescript": "^3.9.6"
   },
   "prettier": {
     "printWidth": 120,
@@ -41,7 +41,7 @@
     "singleQuote": false
   },
   "dependencies": {
-    "@typescript-eslint/experimental-utils": "^3.4.0"
+    "@typescript-eslint/experimental-utils": "^3.6.0"
   },
   "files": [
     "dist",
