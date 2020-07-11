@@ -46,5 +46,10 @@
   "files": [
     "dist",
     "src"
-  ]
+  ],
+  "peerDependencies": {
+    "@typescript-eslint/parser": "*",
+    "eslint": "*",
+    "typescript": "*"
+  }
 }
