@@ -55,6 +55,16 @@ export const withTscErrors = createRule({
               data: {
                 message,
               },
+              fix: (fixer) => {
+                // TODO: select @ts-ignore or @ts-expect-error via option
+                const comment = `
+//  @ts-ignore with: ${message}
+`;
+                return fixer.insertTextBeforeRange(
+                  [diagnostic.start!, diagnostic.start! + diagnostic.length!],
+                  comment
+                );
+              },
             });
           }
         });
