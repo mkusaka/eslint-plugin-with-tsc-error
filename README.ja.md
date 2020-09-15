@@ -21,10 +21,10 @@ module.exports = {
     project: "tsconfig.eslint.json", // This rule require type information
   },
   plugins: [
-    "eslint-plugin-with-tsc-error",
+    "with-tsc-error",
   ],
   rules: {
-    "eslint-plugin-with-tsc-error/all",
+    "with-tsc-error/all": "warn",
   },
 };
 ```
