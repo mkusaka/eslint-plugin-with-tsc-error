@@ -18,6 +18,7 @@ export const withTscErrors = createRule({
       message: "{{ message }}",
     },
     schema: [],
+    fixable: "code",
   },
   defaultOptions: [],
   create(context) {

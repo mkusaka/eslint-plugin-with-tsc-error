@@ -3,11 +3,11 @@
 ## install
 
 ```bash
-npm install --save-dev eslint eslint-plugin-with-tsc-error @typescript-eslint/parser @typescript-eslint/eslint-plugin typescript
+npm install --save-dev eslint-plugin-with-tsc-error
 ```
 
 ```bash
-yarn add -D eslint eslint-plugin-with-tsc-error @typescript-eslint/parser @typescript-eslint/eslint-plugin typescript
+yarn add -D eslint-plugin-with-tsc-error
 ```
 
 ## config
