@@ -41,6 +41,8 @@ export const withTscErrors = createRule({
               diagnostic.start! + diagnostic.length!
             );
             const message = ts.flattenDiagnosticMessageText(diagnostic.messageText, "\n");
+            const firstOfLineToken = diagnostic.file.getPositionOfLineAndCharacter(startLine, 0);
+            const messageForComment = ts.flattenDiagnosticMessageText(diagnostic.messageText, "; ");
             context.report({
               loc: {
                 start: {
@@ -58,13 +60,9 @@ export const withTscErrors = createRule({
               },
               fix: (fixer) => {
                 // TODO: select @ts-ignore or @ts-expect-error via option
-                const comment = `
-//  @ts-ignore with: ${message}
+                const comment = `// @ts-ignore with: ${messageForComment}
 `;
-                return fixer.insertTextBeforeRange(
-                  [diagnostic.start!, diagnostic.start! + diagnostic.length!],
-                  comment
-                );
+                return fixer.insertTextBeforeRange([firstOfLineToken, firstOfLineToken], comment);
               },
             });
           }
