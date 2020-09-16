@@ -68,6 +68,7 @@ export const all = createRule<[SchemaType], "message">({
             const message = ts.flattenDiagnosticMessageText(diagnostic.messageText, "\n");
             const firstOfLineToken = diagnostic.file.getPositionOfLineAndCharacter(startLine, 0);
             const messageForComment = ts.flattenDiagnosticMessageText(diagnostic.messageText, "; ");
+            // TODO: filter error via typescript error codes.
             context.report({
               loc: {
                 start: {
