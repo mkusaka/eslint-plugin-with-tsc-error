@@ -1,14 +1,20 @@
 import { ESLintUtils } from "@typescript-eslint/experimental-utils";
 import ts from "typescript";
+import { compare } from "compare-versions";
 
 const createRule = ESLintUtils.RuleCreator((ruleName) => ruleName);
 
+type CommentVariables = "ts-ignore" | "ts-expect-error";
+// ts 3.9 introduce ts-expect-error comment.
+// @see https://devblogs.microsoft.com/typescript/announcing-typescript-3-9-beta/
+const defaultType: CommentVariables = compare(ts.versionMajorMinor, "3.9", ">=") ? "ts-expect-error" : "ts-ignore";
+
 type SchemaType = {
-  tsCommentType: "ts-ignore" | "ts-expect-error";
+  tsCommentType: CommentVariables;
 };
 
 const defaultOptions: SchemaType = {
-  tsCommentType: "ts-ignore",
+  tsCommentType: defaultType,
 };
 
 export const withTscErrors = createRule<[SchemaType], "message">({
