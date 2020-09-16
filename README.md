@@ -29,6 +29,34 @@ module.exports = {
 };
 ```
 
+## options
+
+|  key | value | default | description |
+| --- | --- | --- | --- |
+|  tsCommentType | "ts-ignore" or "ts-expect-error" | ts version >= 3.9 ? "ts-expect-error" : "ts-ignore" | specify ts comment. |
+
+### examples
+```js
+module.exports = {
+  parser: "@typescript-eslint/parser",
+  parserOptions: {
+    ecmaVersion: 2020,
+    sourceType: "module",
+    project: "tsconfig.eslint.json", // This rule require type information
+  },
+  plugins: [
+    "with-tsc-error",
+  ],
+  rules: {
+    "with-tsc-error/all": [
+      "warn",
+      {
+        tsCommentType: "ts-ignore",
+      },
+    ],
+  },
+};
+```
 
 ## Motivation
 
