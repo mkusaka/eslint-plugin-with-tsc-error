@@ -3,7 +3,15 @@ import ts from "typescript";
 
 const createRule = ESLintUtils.RuleCreator((ruleName) => ruleName);
 
-export const withTscErrors = createRule({
+type SchemaType = {
+  tsCommentType: "ts-ignore" | "ts-expect-error";
+};
+
+const defaultOptions: SchemaType = {
+  tsCommentType: "ts-ignore",
+};
+
+export const withTscErrors = createRule<[SchemaType], "message">({
   name: "with-tsc-errors",
   meta: {
     type: "suggestion",
@@ -17,10 +25,21 @@ export const withTscErrors = createRule({
       // see: https://eslint.org/docs/developer-guide/working-with-rules#using-message-placeholders
       message: "{{ message }}",
     },
-    schema: [],
+    schema: [
+      {
+        type: "object",
+        properties: {
+          tsCommentType: {
+            type: "string",
+            enum: ["ts-ignore", "ts-expect-error"],
+          },
+        },
+        additionalProperties: false,
+      },
+    ],
     fixable: "code",
   },
-  defaultOptions: [],
+  defaultOptions: [defaultOptions],
   create(context) {
     const { program } = ESLintUtils.getParserServices(context);
     // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -59,8 +78,8 @@ export const withTscErrors = createRule({
                 message,
               },
               fix: (fixer) => {
-                // TODO: select @ts-ignore or @ts-expect-error via option
-                const comment = `// @ts-ignore with: ${messageForComment}
+                const { tsCommentType } = context.options[0];
+                const comment = `// @${tsCommentType} with: ${messageForComment}
 `;
                 return fixer.insertTextBeforeRange([firstOfLineToken, firstOfLineToken], comment);
               },
