@@ -17,8 +17,8 @@ const defaultOptions: SchemaType = {
   tsCommentType: defaultType,
 };
 
-export const withTscErrors = createRule<[SchemaType], "message">({
-  name: "with-tsc-errors",
+export const all = createRule<[SchemaType], "message">({
+  name: "all",
   meta: {
     type: "suggestion",
     docs: {

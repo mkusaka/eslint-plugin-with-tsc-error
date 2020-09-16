@@ -1,7 +1,7 @@
-import { withTscErrors } from "./rules/with-tsc-error";
+import { all } from "./rules/all";
 
 export = {
   rules: {
-    all: withTscErrors,
+    all,
   },
 };
