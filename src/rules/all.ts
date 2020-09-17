@@ -1,3 +1,4 @@
+import { RuleFixer } from '@typescript-eslint/experimental-utils/dist/ts-eslint';
 import { ESLintUtils } from "@typescript-eslint/experimental-utils";
 import ts from "typescript";
 import { compare } from "compare-versions";
@@ -11,10 +12,12 @@ const defaultType: CommentVariables = compare(ts.versionMajorMinor, "3.9", ">=")
 
 type SchemaType = {
   tsCommentType: CommentVariables;
+  reportOnly: boolean;
 };
 
 const defaultOptions: SchemaType = {
   tsCommentType: defaultType,
+  reportOnly: false,
 };
 
 export const all = createRule<[SchemaType], "message">({
@@ -68,6 +71,7 @@ export const all = createRule<[SchemaType], "message">({
             const message = ts.flattenDiagnosticMessageText(diagnostic.messageText, "\n");
             const firstOfLineToken = diagnostic.file.getPositionOfLineAndCharacter(startLine, 0);
             const messageForComment = ts.flattenDiagnosticMessageText(diagnostic.messageText, "; ");
+            const { reportOnly } = context.options[0];
             // TODO: filter error via typescript error codes.
             context.report({
               loc: {
@@ -84,12 +88,17 @@ export const all = createRule<[SchemaType], "message">({
               data: {
                 message,
               },
-              fix: (fixer) => {
-                const { tsCommentType } = context.options[0];
-                const comment = `// @${tsCommentType} with: ${messageForComment}
+              fix: (() => {
+                if (reportOnly) {
+                  return null;
+                }
+                return (fixer: RuleFixer) => {
+                  const { tsCommentType } = context.options[0];
+                  const comment = `// @${tsCommentType} with: ${messageForComment}
 `;
-                return fixer.insertTextBeforeRange([firstOfLineToken, firstOfLineToken], comment);
-              },
+                  return fixer.insertTextBeforeRange([firstOfLineToken, firstOfLineToken], comment);
+                };
+              })(),
             });
           }
         });

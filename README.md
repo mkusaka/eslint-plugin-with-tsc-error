@@ -33,7 +33,8 @@ module.exports = {
 
 |  key | value | default | description |
 | --- | --- | --- | --- |
-|  tsCommentType | "ts-ignore" or "ts-expect-error" | ts version >= 3.9 ? "ts-expect-error" : "ts-ignore" | specify ts comment. |
+|  tsCommentType | "ts-ignore" or "ts-expect-error" | ts version >= 3.9 ? "ts-expect-error" : "ts-ignore" | specify ts-comment. |
+|  reportOnly | boolean | false | if true, no autofix provided even if --fix flag enable. |
 
 ### examples
 ```js
