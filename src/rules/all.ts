@@ -1,4 +1,4 @@
-import { RuleFixer } from '@typescript-eslint/experimental-utils/dist/ts-eslint';
+import { RuleFixer } from "@typescript-eslint/experimental-utils/dist/ts-eslint";
 import { ESLintUtils } from "@typescript-eslint/experimental-utils";
 import ts from "typescript";
 import { compare } from "compare-versions";
@@ -41,6 +41,9 @@ export const all = createRule<[SchemaType], "message">({
           tsCommentType: {
             type: "string",
             enum: ["ts-ignore", "ts-expect-error"],
+          },
+          reportOnly: {
+            type: "boolean",
           },
         },
         additionalProperties: false,
