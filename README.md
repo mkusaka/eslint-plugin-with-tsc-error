@@ -1,4 +1,7 @@
 # eslint-plugin-with-tsc-error
+Report TypeScript Compile error through eslint.
+- report typescript compile error
+- autocomment ts-comment (like ts-ignore, ts-expect-error) with typescript compile error log with eslint autofix.
 
 ## install
 
@@ -61,16 +64,17 @@ module.exports = {
 
 ## Motivation
 
-The typescript compiler has a variety of options to adjust the flexibility of the type system
-Especially when converting a javascript project to a typescript project, many of those options are disabled and often included quite loosely as a type system
+The typescript compiler has a variety of options to adjust the flexibility of the type system.
 
-However, if you want to do a stricter type check later (e.g., noImplicitAny to true), it can be difficult in practice to enable all those options at once, which is more pronounced in larger projects
+Especially when converting a javascript project to a typescript project, many of those options are disabled and often included quite loosely as a type system.
 
-This package solves those problems as a plugin for eslint
+However, if you want to do a stricter type check later (e.g., noImplicitAny to true), it can be difficult in practice to enable all those options at once, which is more pronounced in larger projects.
 
-Because it is an eslint plugin, you can multiply it by a file or change the typescript options only when eslint is running (i.e. you can tighten the options only when eslint is running)
+This package solves those problems as a plugin for eslint.
 
-Translated with www.DeepL.com/Translator (free version)
+Because it is an eslint plugin, you can multiply it by a file or change the typescript options only when eslint is running (i.e. you can tighten the options only when eslint is running).
+
+Translated with www.DeepL.com/Translator (free version).
 
 ## Rule Details
 
