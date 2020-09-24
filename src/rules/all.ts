@@ -73,7 +73,6 @@ export const all = createRule<[SchemaType], "message">({
             );
             const message = ts.flattenDiagnosticMessageText(diagnostic.messageText, "\n");
             const firstOfLineToken = diagnostic.file.getPositionOfLineAndCharacter(startLine, 0);
-            const messageForComment = ts.flattenDiagnosticMessageText(diagnostic.messageText, "; ");
             const { reportOnly } = context.options[0];
             // TODO: filter error via typescript error codes.
             context.report({
@@ -97,7 +96,8 @@ export const all = createRule<[SchemaType], "message">({
                 }
                 return (fixer: RuleFixer) => {
                   const { tsCommentType } = context.options[0];
-                  const comment = `// @${tsCommentType} with: ${messageForComment}
+                  const comment = `/** ${message} */
+// @${tsCommentType} the above original error.
 `;
                   return fixer.insertTextBeforeRange([firstOfLineToken, firstOfLineToken], comment);
                 };

@@ -40,6 +40,7 @@ module.exports = {
 |  reportOnly | boolean | false | if true, no autofix provided even if --fix flag enable. |
 
 ### examples
+with eslint config.
 ```js
 module.exports = {
   parser: "@typescript-eslint/parser",
@@ -56,10 +57,16 @@ module.exports = {
       "warn",
       {
         tsCommentType: "ts-ignore",
+        reportOnly: false,
       },
     ],
   },
 };
+```
+
+one liner
+```
+yarn eslint --no-eslintrc --fix --plugin with-tsc-error --rule '{"with-tsc-error/all": ["error", { "tsCommentType": "ts-ignore", "reportOnly": false }]}' --parser '@typescript-eslint/parser' --parser-options '{ "ecmaVersion": 2020, "sourceType": "module", "project": "tsconfig.eslint.json" }'
 ```
 
 ## Motivation
