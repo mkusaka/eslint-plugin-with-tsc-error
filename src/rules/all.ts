@@ -55,7 +55,7 @@ export const all = createRule<[SchemaType], "message">({
   create(context) {
     const { program } = ESLintUtils.getParserServices(context);
     // eslint-disable-next-line @typescript-eslint/no-empty-function
-    const emitResults = program.emit(undefined, () => {});
+    const emitResults = program.emit(undefined, () => { });
     const allDiagnostics = [
       ...ts.getPreEmitDiagnostics(program, program.getSourceFile(context.getFilename())),
       ...emitResults.diagnostics,
@@ -73,7 +73,7 @@ export const all = createRule<[SchemaType], "message">({
             );
             const message = ts.flattenDiagnosticMessageText(diagnostic.messageText, "\n");
             const firstOfLineToken = diagnostic.file.getPositionOfLineAndCharacter(startLine, 0);
-            const { reportOnly } = context.options[0];
+            const { reportOnly = false } = context.options[0];
             // TODO: filter error via typescript error codes.
             context.report({
               loc: {
@@ -95,7 +95,7 @@ export const all = createRule<[SchemaType], "message">({
                   return null;
                 }
                 return (fixer: RuleFixer) => {
-                  const { tsCommentType } = context.options[0];
+                  const { tsCommentType = "ts-ignore" } = context.options[0];
                   const comment = `/** ${message} */
 // @${tsCommentType} the above original error.
 `;
