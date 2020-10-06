@@ -97,7 +97,7 @@ export const all = createRule<[SchemaType], "message">({
                 return (fixer: RuleFixer) => {
                   const { tsCommentType = "ts-ignore" } = context.options[0];
                   const comment = `/** ${message} */
-// @${tsCommentType} the above original error.
+// @${tsCommentType} with above original error.
 `;
                   return fixer.insertTextBeforeRange([firstOfLineToken, firstOfLineToken], comment);
                 };

@@ -17,8 +17,8 @@
   "devDependencies": {
     "@types/eslint": "^7.2.3",
     "@types/estree": "^0.0.45",
-    "@typescript-eslint/eslint-plugin": "^4.3.0",
-    "@typescript-eslint/parser": "^4.3.0",
+    "@typescript-eslint/eslint-plugin": "^4.4.0",
+    "@typescript-eslint/parser": "^4.4.0",
     "eslint": "^7.10.0",
     "eslint-config-prettier": "^6.12.0",
     "eslint-plugin-prettier": "^3.1.4",
@@ -34,7 +34,7 @@
     "singleQuote": false
   },
   "dependencies": {
-    "@typescript-eslint/experimental-utils": "^4.3.0",
+    "@typescript-eslint/experimental-utils": "^4.4.0",
     "compare-versions": "^3.6.0"
   },
   "files": [
