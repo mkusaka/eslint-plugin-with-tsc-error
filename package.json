@@ -12,7 +12,7 @@
   "scripts": {
     "start": "tsc --watch src",
     "build": "rm -rf dist && tsc -p .",
-    "prepare": "yarn build"
+    "prepublishOnly": "yarn build"
   },
   "devDependencies": {
     "@types/eslint": "^7.2.3",
