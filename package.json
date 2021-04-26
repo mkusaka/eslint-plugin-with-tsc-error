@@ -15,18 +15,18 @@
     "prepublishOnly": "yarn build"
   },
   "devDependencies": {
-    "@types/eslint": "^7.2.6",
-    "@types/estree": "^0.0.45",
-    "@typescript-eslint/eslint-plugin": "^4.9.0",
-    "@typescript-eslint/parser": "^4.9.0",
-    "eslint": "^7.15.0",
-    "eslint-config-prettier": "^7.0.0",
-    "eslint-plugin-prettier": "^3.2.0",
-    "husky": "^4.3.5",
-    "lint-staged": "^10.5.3",
+    "@types/eslint": "^7.2.10",
+    "@types/estree": "^0.0.47",
+    "@typescript-eslint/eslint-plugin": "^4.22.0",
+    "@typescript-eslint/parser": "^4.22.0",
+    "eslint": "^7.25.0",
+    "eslint-config-prettier": "^7.2.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "husky": "^4.3.8",
+    "lint-staged": "^10.5.4",
     "prettier": "^2.2.1",
-    "tslib": "^2.0.3",
-    "typescript": "^4.1.2"
+    "tslib": "^2.2.0",
+    "typescript": "^4.2.4"
   },
   "prettier": {
     "printWidth": 120,
@@ -34,7 +34,7 @@
     "singleQuote": false
   },
   "dependencies": {
-    "@typescript-eslint/experimental-utils": "^4.9.0",
+    "@typescript-eslint/experimental-utils": "^4.22.0",
     "compare-versions": "^3.6.0"
   },
   "files": [
