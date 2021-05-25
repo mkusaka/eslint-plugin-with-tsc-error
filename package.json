@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-with-tsc-error",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "main": "dist/index.js",
   "repository": "https://github.com/mkusaka/eslint-plugin-with-tsc-error.git",
   "bugs": {
