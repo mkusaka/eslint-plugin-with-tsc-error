@@ -7,6 +7,7 @@
     "lib": [
       "esnext"
     ],
+    "target": "ES2017",
     "importHelpers": true,
     "declaration": true,
     "sourceMap": true,

@@ -52,7 +52,7 @@ export const all = createRule<[SchemaType], "message">({
     fixable: "code",
   },
   defaultOptions: [defaultOptions],
-  create(context) {
+  create(context, [options]) {
     const { program } = ESLintUtils.getParserServices(context);
     // eslint-disable-next-line @typescript-eslint/no-empty-function
     const emitResults = program.emit(undefined, () => {});
@@ -73,7 +73,7 @@ export const all = createRule<[SchemaType], "message">({
             );
             const message = ts.flattenDiagnosticMessageText(diagnostic.messageText, "\n");
             const firstOfLineToken = diagnostic.file.getPositionOfLineAndCharacter(startLine, 0);
-            const { reportOnly = false } = context.options[0];
+            const { reportOnly } = options;
             // eslint line loc and ts line loc has difference.
             // should we use tsNodeToESTreeNodeMap?
             const esStartLine = startLine + 1;
@@ -99,7 +99,7 @@ export const all = createRule<[SchemaType], "message">({
                   return null;
                 }
                 return (fixer: RuleFixer) => {
-                  const { tsCommentType = "ts-ignore" } = context.options[0];
+                  const { tsCommentType = "ts-ignore" } = options;
                   const comment = `/** ${message} */
 // @${tsCommentType} with above original error.
 `;
