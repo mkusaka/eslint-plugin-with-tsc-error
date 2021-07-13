@@ -66,18 +66,18 @@
     "@nodelib/fs.scandir" "2.1.4"
     fastq "^1.6.0"
 
-"@types/eslint@^7.2.11":
-  version "7.2.11"
-  resolved "https://registry.yarnpkg.com/@types/eslint/-/eslint-7.2.11.tgz#180b58f5bb7d7376e39d22496e2b08901aa52fd2"
-  integrity sha512-WYhv//5K8kQtsSc9F1Kn2vHzhYor6KpwPbARH7hwYe3C3ETD0EVx/3P5qQybUoaBEuUa9f/02JjBiXFWalYUmw==
+"@types/eslint@^7.28.0":
+  version "7.28.0"
+  resolved "https://registry.yarnpkg.com/@types/eslint/-/eslint-7.28.0.tgz#7e41f2481d301c68e14f483fe10b017753ce8d5a"
+  integrity sha512-07XlgzX0YJUn4iG1ocY4IX9DzKSmMGUs6ESKlxWhZRaa0fatIWaHWUVapcuGa8r5HFnTqzj+4OCjd5f7EZ/i/A==
   dependencies:
     "@types/estree" "*"
     "@types/json-schema" "*"
 
-"@types/estree@*", "@types/estree@^0.0.47":
-  version "0.0.47"
-  resolved "https://registry.yarnpkg.com/@types/estree/-/estree-0.0.47.tgz#d7a51db20f0650efec24cd04994f523d93172ed4"
-  integrity sha512-c5ciR06jK8u9BstrmJyO97m+klJrrhCf9u3rLu3DEAJBirxRqSCvDQoYKmxuYwQI5SZChAWu+tq9oVlGRuzPAg==
+"@types/estree@*", "@types/estree@^0.0.50":
+  version "0.0.50"
+  resolved "https://registry.yarnpkg.com/@types/estree/-/estree-0.0.50.tgz#1e0caa9364d3fccd2931c3ed96fdbeaa5d4cca83"
+  integrity sha512-C6N5s2ZFtuZRj54k2/zyRhNDjJwwcViAM3Nbm8zjBpbqAdZ00mr0CFxvSKeO8Y/e03WVFLpQMdHYVfUd6SB+Hw==
 
 "@types/json-schema@*", "@types/json-schema@^7.0.3":
   version "7.0.7"
