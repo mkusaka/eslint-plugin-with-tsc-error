@@ -17,15 +17,15 @@
   "devDependencies": {
     "@types/eslint": "^7.2.11",
     "@types/estree": "^0.0.47",
-    "@typescript-eslint/eslint-plugin": "^4.25.0",
-    "@typescript-eslint/parser": "^4.25.0",
-    "eslint": "^7.27.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-prettier": "^3.4.0",
+    "@typescript-eslint/eslint-plugin": "^4.33.0",
+    "@typescript-eslint/parser": "^4.33.0",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.10.0",
+    "eslint-plugin-prettier": "^3.4.1",
     "husky": "^6.0.0",
-    "lint-staged": "^11.0.0",
-    "prettier": "^2.3.0",
-    "typescript": "^4.2.4"
+    "lint-staged": "^11.2.6",
+    "prettier": "^2.8.8",
+    "typescript": "^4.9.5"
   },
   "prettier": {
     "printWidth": 120,
@@ -33,9 +33,9 @@
     "singleQuote": false
   },
   "dependencies": {
-    "@typescript-eslint/experimental-utils": "^4.25.0",
+    "@typescript-eslint/experimental-utils": "^4.33.0",
     "compare-versions": "^3.6.0",
-    "tslib": "^2.2.0"
+    "tslib": "^2.6.2"
   },
   "files": [
     "dist",
