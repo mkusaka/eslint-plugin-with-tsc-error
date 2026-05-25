@@ -3,7 +3,6 @@
   minimumReleaseAge: "7days",
   extends: [
     "config:best-practices",
-    ":onlyNpm",
     "group:allNonMajor",
     "group:definitelyTyped",
   ],
